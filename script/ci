@@ -14,7 +14,9 @@ print_ruby_version() {
 }
 
 run_code_quality_checks() {
-  bundle exec rubocop .
+  if ! [ -x "$(command -v truffleruby)" ]; then
+    bundle exec rubocop .
+  fi
 }
 
 run_unit_tests() {
